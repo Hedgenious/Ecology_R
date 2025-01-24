@@ -7,6 +7,12 @@
 
 ---
 
+[Lesson 1](docs/lessons/lesson_1.md)
+[Lesson 2](docs/lessons/lesson_2.md)
+[Glossary](docs/glossary.md)
+
+---
+
 ## 📢 Сообщество
 
 - 📚 **Канал курса, новости:** [Telegram-канал: t.me/ecology_R](https://t.me/ecology_R)  
