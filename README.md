@@ -13,7 +13,8 @@
 [Руководство к занятию 2](site/lessons/lesson_2.md)
 [Машинно-человеческий словарь](site/general/glossary.md)
 [Программа первой цепочки семинаров](site/general/program.md)
-
+[Словарь языка R (pdf)](resourses/R_glossary.pdf)
+[Шпаргалка Base R (pdf)](resourses/base-r_cheat_sheet.pdf)
 
 ---
 
