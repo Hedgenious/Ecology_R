@@ -9,7 +9,7 @@
 
 [Lesson 1](site/lessons/lesson_1.md)
 [Lesson 2](site/lessons/lesson_2.md)
-[Glossary](site/glossary.md)
+[Glossary](site/general/glossary.md)
 
 ---
 
