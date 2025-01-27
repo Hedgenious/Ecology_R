@@ -25,8 +25,6 @@
 
 ---
 
-
-https://hedgenious.github.io/Ecology_R/
 ## 📢 Сообщество
 
 - 📚 **Канал курса, новости:** [Telegram-канал: t.me/ecology_R](https://t.me/ecology_R)  
