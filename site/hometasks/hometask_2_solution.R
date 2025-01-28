@@ -1,5 +1,7 @@
+### Задание 1: Работа с последовательностью
+
 # Создаём числовую последовательность
-numbers <- sort(unique(c(seq(0, 99, by = 5), seq(1, 400, by = 5))))
+numbers <- sort(unique(c(seq(0, 245, by = 5), seq(1, 246, by = 5))))
 
 # Выводим результат в консоль
 print(numbers)
@@ -15,6 +17,7 @@ print(numbers_multiplied)
 sum_numbers <- sum(numbers_multiplied)
 print(sum_numbers)
 
+### Задание 2: Работа с двумя последовательностями и вычислением средних значений
 
 # Создаём два числовых вектора
 vector_a <- seq(1, 199, by = 2) # Нечётные числа
@@ -33,6 +36,7 @@ print(mean_a)
 print(mean_b)
 print(mean_sum)
 
+### Задание 3: Создание и работа с data.frame
 
 # Создаём data.frame
 TABLE <- data.frame(
@@ -78,5 +82,3 @@ print(mean_sum)
 # Считаем сумму средних значений
 total_mean <- mean_numbers + mean_a + mean_b + mean_sum
 print(total_mean)
-
-
