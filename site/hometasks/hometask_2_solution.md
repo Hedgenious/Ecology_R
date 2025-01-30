@@ -1,14 +1,13 @@
 ### Задание 1: Работа с последовательностью
 
 # Создаём числовую последовательность
-numbers <- sort(c(seq(0, 245, by = 5), seq(1, 246, by = 5)))
+numbers <- sort(unique(c(seq(0, 245, by = 5), seq(1, 246, by = 5))))
 
 # Выводим результат в консоль
 print(numbers)
 
 # Проверяем тип данных
 print(class(numbers))
-class(numbers)
 
 # Умножаем каждый элемент вектора на 3
 numbers_multiplied <- numbers * 3
@@ -49,7 +48,7 @@ TABLE <- data.frame(
 
 # Просмотр первых и последних строк
 print(head(TABLE))
-print(tail(TABLE, n = 10))
+print(tail(TABLE))
 
 # Находим минимальные и максимальные значения в каждом столбце
 min_numbers <- min(TABLE$numbers)
@@ -83,5 +82,3 @@ print(mean_sum)
 # Считаем сумму средних значений
 total_mean <- mean_numbers + mean_a + mean_b + mean_sum
 print(total_mean)
-
-
