@@ -13,10 +13,14 @@
 
 - [Руководство к занятию 1 (16.01.2025)](site/lessons/lesson_1.md)
 - [Руководство к занятию 2 (23.01.2025)](site/lessons/lesson_2.md)
+- [Руководство к занятию 3 готовится ...(30.01.2025)](site/lessons/)
+
 - [Машинно-человеческий словарь](site/general/glossary.md)
-- [Программа первой цепочки семинаров](site/general/program.md)
+
 - [Словарь языка R (pdf)](resourses/R_glossary.pdf)
 - [Шпаргалка Base R (pdf)](resourses/base-r_cheat_sheet.pdf)
+
+- [Программа первой цепочки семинаров](site/general/program.md)
 
 ---
 
