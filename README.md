@@ -26,6 +26,8 @@
 
 ## 📖 Домашние задания
 - [Домашнее задание к занятию 2](site/hometasks/hometask_2.md)
+- [Решение домашнего задания 2](site/hometasks/hometask_2_solution.R)
+
 
 ---
 
