@@ -29,9 +29,7 @@
 
 ### Словари и шпаргалки
 
--   [Машинно-человеческий словарь](site/general/glossary.md)
-
--   [Словарь языка R (.pdf)](resourses/R_glossary.pdf)
+-   [Машинно-человеческий словарь (html)](site/general/glossary.md)
 
 -   [Шпаргалка Base R (.pdf)](resourses/base-r_cheat_sheet.pdf)
 
