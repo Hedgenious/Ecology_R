@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://rs.gbif.org/schema/eml-gbif-profile/1.3/eml.xsd"
+packageId="0c4bf92b-95c9-4a2a-9756-67d98195459f"  system="http://gbif.org" scope="system"
+xml:lang="en">
+    <dataset>
+        <alternateIdentifier>10.15468/4gzrjh</alternateIdentifier>
+        <alternateIdentifier>https://ipt.naturalsciences.be/resource?r=be_rbins_vertebrates_aves</alternateIdentifier>
+        <alternateIdentifier>0c4bf92b-95c9-4a2a-9756-67d98195459f</alternateIdentifier>
+        <alternateIdentifier>http://ipt.naturalsciences.be/ipt/resource?r=be_rbins_vertebrates_aves</alternateIdentifier>
+        <title>RBINS Bird collection</title>
+        <creator>
+            <individualName>
+                <givenName>Olivier</givenName>
+                <surName>Pauwels</surName>
+            </individualName>
+            <organizationName>Royal Belgian Institute for Natural Sciences  -  Department of Scientific Heritage Service</organizationName>
+            <positionName>Curator</positionName>
+            <address>
+                <deliveryPoint>Vautierstraat 29</deliveryPoint>
+                <city>Brussels</city>
+                <postalCode>1000</postalCode>
+                <country>BELGIUM</country>
+            </address>
+        </creator>
+        <metadataProvider>
+            <individualName>
+                <givenName>Thomas</givenName>
+                <surName>Vandenberghe</surName>
+            </individualName>
+            <organizationName>Royal Belgian Institute for Natural Sciences</organizationName>
+            <positionName>Data manager</positionName>
+            <address>
+                <deliveryPoint>Vautierstraat 29</deliveryPoint>
+                <city>Brussels</city>
+                <postalCode>1000</postalCode>
+                <country>BELGIUM</country>
+            </address>
+            <electronicMailAddress>tvandenberghe@naturalsciences.be</electronicMailAddress>
+            <userId directory="http://orcid.org/">0000-0002-9269-6548</userId>
+        </metadataProvider>
+        <metadataProvider>
+            <individualName>
+                <givenName>Stijn</givenName>
+                <surName>Cooleman</surName>
+            </individualName>
+            <organizationName>Belgian Biodiversity Platform</organizationName>
+            <positionName>Biodiversity Data Officer</positionName>
+            <address>
+                <country>BELGIUM</country>
+            </address>
+            <electronicMailAddress>s.cooleman@biodiversity.be</electronicMailAddress>
+            <userId directory="https://orcid.org/">0000-0003-3029-0451</userId>
+        </metadataProvider>
+        <associatedParty>
+            <individualName>
+                <givenName>Jean-Marc</givenName>
+                <surName>Herpers</surName>
+            </individualName>
+            <organizationName>Royal Belgian Institute for Natural Sciences</organizationName>
+            <positionName>Curator of digital data</positionName>
+            <address>
+                <city>Brussels</city>
+                <country>BELGIUM</country>
+            </address>
+            <electronicMailAddress>jmherpers@naturalsciences.be</electronicMailAddress>
+            <role>CUSTODIAN_STEWARD</role>
+        </associatedParty>
+        <associatedParty>
+            <individualName>
+                <givenName>Franck</givenName>
+                <surName>Theeten</surName>
+            </individualName>
+            <organizationName>Royal Museum for Central Africa</organizationName>
+            <positionName>Database manager</positionName>
+            <address>
+                <country>BELGIUM</country>
+            </address>
+            <electronicMailAddress>franck.theeten@africamuseum.be</electronicMailAddress>
+            <userId directory="https://orcid.org/">0000-0002-0626-538X</userId>
+            <role>PROGRAMMER</role>
+        </associatedParty>
+        <pubDate>
+                2024-10-25
+        </pubDate>
+        <language>ENGLISH</language>
+        <abstract>
+            <para>The RBINS bird collection is made up of around 132,000 specimens. It includes a significant collection of skeletons and eggs as well as type material for 123 species. It is one of the institute&amp;#39;s oldest collections and for much of the historical material, including the tropical birds, we owe our thanks to ornithologist Bernard du Bus de Gisignies, the first director of the Museum of Natural Sciences in 1848. Alphonse Dubois, who was appointed curator of the vertebrate collections in 1869, was the first to describe many of De Gisignies’ specimens. In the 1930s Zoologist René Verheyen added a great deal of material to the ornithological collections and in particular, an exceptionally large collection of Belgian and Central African fauna.</para>
+        </abstract>
+        <keywordSet>
+            <keyword>DaRWIN</keyword>
+            <keyword>Natural history collection</keyword>
+            <keyword>RBINS</keyword>
+            <keyword>Aves</keyword>
+            <keywordThesaurus>N/A</keywordThesaurus>
+        </keywordSet>
+        <keywordSet>
+            <keyword>Occurrence</keyword>
+            <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type.xml</keywordThesaurus>
+        </keywordSet>
+        <keywordSet>
+            <keyword>Specimen</keyword>
+            <keywordThesaurus>GBIF Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml</keywordThesaurus>
+        </keywordSet>
+        <keywordSet>
+            <keyword>Occurrence</keyword>
+            <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml</keywordThesaurus>
+        </keywordSet>
+        <intellectualRights>
+            <para>This work is licensed under a <ulink url="http://creativecommons.org/licenses/by-nc/4.0/legalcode"><citetitle>Creative Commons Attribution Non Commercial (CC-BY-NC) 4.0 License</citetitle></ulink>.</para>
+        </intellectualRights>
+        <licensed>
+            <licenseName>Creative Commons Attribution Non Commercial 4.0 International</licenseName>
+            <url>https://spdx.org/licenses/CC-BY-NC-4.0.html</url>
+            <identifier>CC-BY-NC-4.0</identifier>
+        </licensed>
+        <distribution scope="document">
+            <online>
+                <url function="information">https://collections.naturalsciences.be/ssh-vertebrates/collections/aves3</url>
+            </online>
+        </distribution>
+        <distribution scope="document">
+            <online>
+                <url function="download">https://ipt.naturalsciences.be/archive.do?r=be_rbins_vertebrates_aves</url>
+            </online>
+        </distribution>
+        <coverage>
+            <geographicCoverage>
+                <geographicDescription>Worldwide</geographicDescription>
+                <boundingCoordinates>
+                    <westBoundingCoordinate>-180</westBoundingCoordinate>
+                    <eastBoundingCoordinate>180</eastBoundingCoordinate>
+                    <northBoundingCoordinate>90</northBoundingCoordinate>
+                    <southBoundingCoordinate>-90</southBoundingCoordinate>
+                </boundingCoordinates>
+            </geographicCoverage>
+            <taxonomicCoverage>
+                <taxonomicClassification>
+                    <taxonRankName>Class</taxonRankName>
+                    <taxonRankValue>Aves</taxonRankValue>
+                </taxonomicClassification>
+            </taxonomicCoverage>
+        </coverage>
+        <maintenance>
+            <description>
+                <para></para>
+            </description>
+            <maintenanceUpdateFrequency>continually</maintenanceUpdateFrequency>
+        </maintenance>
+        <contact>
+            <individualName>
+                <givenName>Patrick</givenName>
+                <surName>Semal</surName>
+            </individualName>
+            <organizationName>Royal Belgian Institute for Natural Sciences</organizationName>
+            <positionName>Head of Scientific Heritage</positionName>
+            <address>
+                <deliveryPoint>Vautierstraat 29</deliveryPoint>
+                <city>Brussels</city>
+                <postalCode>1000</postalCode>
+                <country>BELGIUM</country>
+            </address>
+            <electronicMailAddress>psemal@naturalsciences.be</electronicMailAddress>
+            <userId directory="http://orcid.org/">0000-0002-4048-7728</userId>
+        </contact>
+        <contact>
+            <organizationName>Biodiversity and Ecological Data and Information Centre - Royal Belgian Institute for Natural Sciences</organizationName>
+            <address>
+                <deliveryPoint>Vautierstraat 29</deliveryPoint>
+                <city>Brussels</city>
+                <postalCode>1000</postalCode>
+                <country>BELGIUM</country>
+            </address>
+            <electronicMailAddress>info@bedic.be</electronicMailAddress>
+        </contact>
+
+    </dataset>
+
+    <additionalMetadata>
+        <metadata>
+            <gbif>
+                <dateStamp>2025-01-22T21:10:53Z</dateStamp>
+                <citation>Pauwels O, Vandenberghe T, Cooleman S (2024). RBINS Bird collection. Version 1.11. Royal Belgian Institute of Natural Sciences. Occurrence dataset https://doi.org/10.15468/4gzrjh accessed via GBIF.org on 2025-01-22.</citation>
+                <formationPeriod>Since 1814</formationPeriod>
+            </gbif>
+        </metadata>
+    </additionalMetadata>
+    </eml:eml>

@@ -1,0 +1,24 @@
+Dataset: Birds of Northern Eurasia 
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Observation.org, Nature data from around the World 
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Birds and Mammals Collections of the Zoological Museum of M.V. Lomonosov Moscow State University 
+Rights as supplied: http://creativecommons.org/licenses/by/4.0/legalcode
+Dataset: RU-BIRDS.RU, Birds observations database from Russia and neighboring regions.  Zoological Museum of M.V. Lomonosov Moscow State University. 
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Vertebrates Collection of the Karaganda Buketov University Museum of Nature 
+Rights as supplied: http://creativecommons.org/licenses/by/4.0/legalcode
+Dataset: Birda - Global Observation Dataset 
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: EOD – eBird Observation Dataset 
+Rights as supplied: http://creativecommons.org/licenses/by/4.0/legalcode
+Dataset: Hatikka.fi observations 
+Rights as supplied: http://creativecommons.org/licenses/by/4.0/legalcode
+Dataset: NABU|naturgucker 
+Rights as supplied: http://creativecommons.org/licenses/by/4.0/legalcode
+Dataset: Xeno-canto - Bird sounds from around the world 
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode
+Dataset: Collection Aves (bird skeletons) SMF 
+Rights as supplied: http://creativecommons.org/licenses/by/4.0/legalcode
+Dataset: iNaturalist Research-grade Observations 
+Rights as supplied: http://creativecommons.org/licenses/by-nc/4.0/legalcode

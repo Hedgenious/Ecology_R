@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://rs.gbif.org/schema/eml-gbif-profile/1.3/eml.xsd"
+packageId="f30150ed-8e8c-45b9-b64c-c70fcb0129cf"  system="http://gbif.org" scope="system"
+xml:lang="en">
+    <dataset>
+        <alternateIdentifier>10.15468/rnwp89</alternateIdentifier>
+        <alternateIdentifier>f30150ed-8e8c-45b9-b64c-c70fcb0129cf</alternateIdentifier>
+        <alternateIdentifier>https://gbif.buketov.edu.kz/resource?r=vcmn-kbu-120species</alternateIdentifier>
+        <title>Vertebrates Collection of the Karaganda Buketov University Museum of Nature</title>
+        <creator>
+            <individualName>
+                <givenName>Meruyert</givenName>
+                <surName>Blyalova</surName>
+            </individualName>
+            <organizationName>Karaganda Buketov University</organizationName>
+            <positionName>lecturer</positionName>
+            <address>
+                <deliveryPoint>University street, 28/2</deliveryPoint>
+                <city>Karaganda</city>
+                <administrativeArea>Karaganda region</administrativeArea>
+                <postalCode>100024</postalCode>
+            </address>
+            <electronicMailAddress>meru-nura98@mail.ru</electronicMailAddress>
+        </creator>
+        <creator>
+            <individualName>
+                <givenName>Zhanerke</givenName>
+                <surName>Blyalova</surName>
+            </individualName>
+            <organizationName>Karaganda Buketov University</organizationName>
+            <positionName>senior lecturer</positionName>
+            <address>
+                <deliveryPoint>University street, 28/2</deliveryPoint>
+                <city>Karaganda</city>
+                <administrativeArea>Karaganda region</administrativeArea>
+                <postalCode>100024</postalCode>
+                <country>KAZAKHSTAN</country>
+            </address>
+            <electronicMailAddress>zhanerke1807@mail.ru</electronicMailAddress>
+            <userId directory="http://www.researcherid.com/rid/">HMV-0526-2023</userId>
+        </creator>
+        <associatedParty>
+            <individualName>
+                <givenName>Zhanerke</givenName>
+                <surName>Blyalova</surName>
+            </individualName>
+            <organizationName>Karaganda Buketov University</organizationName>
+            <positionName>senior lecturer</positionName>
+            <address>
+                <deliveryPoint>University street, 28/2</deliveryPoint>
+                <city>Karaganda</city>
+                <administrativeArea>Karaganda region</administrativeArea>
+                <postalCode>100024</postalCode>
+                <country>KAZAKHSTAN</country>
+            </address>
+            <electronicMailAddress>zhanerke1807@mail.ru</electronicMailAddress>
+            <userId directory="https://orcid.org/">0009-0007-9438-5413</userId>
+            <role>USER</role>
+        </associatedParty>
+        <pubDate>
+                2023-12-06
+        </pubDate>
+        <language>ENGLISH</language>
+        <abstract>
+            Vertebrates Collection of the Karaganda Buketov University Museum of Nature
+        </abstract>
+        <keywordSet>
+            <keyword>Occurrence
+Karaganda Buketov University
+Museum of Nature
+Vertabrates</keyword>
+            <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type_2015-07-10.xml</keywordThesaurus>
+        </keywordSet>
+        <keywordSet>
+            <keyword>Specimen</keyword>
+            <keywordThesaurus>GBIF Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml</keywordThesaurus>
+        </keywordSet>
+        <intellectualRights>
+            <para>This work is licensed under a <ulink url="http://creativecommons.org/licenses/by/4.0/legalcode"><citetitle>Creative Commons Attribution (CC-BY) 4.0 License</citetitle></ulink>.</para>
+        </intellectualRights>
+        <licensed>
+            <licenseName>Creative Commons Attribution 4.0 International</licenseName>
+            <url>https://spdx.org/licenses/CC-BY-4.0.html</url>
+            <identifier>CC-BY-4.0</identifier>
+        </licensed>
+        <distribution scope="document">
+            <online>
+                <url function="information">https://www.gbif.org/grscicoll/collection/</url>
+            </online>
+        </distribution>
+        <distribution scope="document">
+            <online>
+                <url function="download">https://gbif.buketov.edu.kz/archive.do?r=vcmn-kbu-120species</url>
+            </online>
+        </distribution>
+        <coverage>
+            <geographicCoverage>
+                <geographicDescription>Kazakhstan is located between 46°29&apos;37&quot; and 87°18&apos;55&quot; east longitude, 40°34&apos;07&quot; and 55°26&apos;34&quot; north latitude.</geographicDescription>
+                <boundingCoordinates>
+                    <westBoundingCoordinate>-180</westBoundingCoordinate>
+                    <eastBoundingCoordinate>180</eastBoundingCoordinate>
+                    <northBoundingCoordinate>90</northBoundingCoordinate>
+                    <southBoundingCoordinate>-90</southBoundingCoordinate>
+                </boundingCoordinates>
+            </geographicCoverage>
+            <taxonomicCoverage>
+                <generalTaxonomicCoverage>Animalia
+Mammalia
+Aves
+Reptilia
+Amphibia
+Pisces</generalTaxonomicCoverage>
+                <taxonomicClassification>
+                    <taxonRankName>Kingdom</taxonRankName>
+                    <taxonRankValue>Animalia</taxonRankValue>
+                </taxonomicClassification>
+                <taxonomicClassification>
+                    <taxonRankName>Class</taxonRankName>
+                    <taxonRankValue>Mammalia</taxonRankValue>
+                </taxonomicClassification>
+                <taxonomicClassification>
+                    <taxonRankName>Class</taxonRankName>
+                    <taxonRankValue>Aves</taxonRankValue>
+                </taxonomicClassification>
+                <taxonomicClassification>
+                    <taxonRankName>Class</taxonRankName>
+                    <taxonRankValue>Reptilia</taxonRankValue>
+                </taxonomicClassification>
+            </taxonomicCoverage>
+        </coverage>
+        <maintenance>
+            <description>
+                <para></para>
+            </description>
+            <maintenanceUpdateFrequency>irregular</maintenanceUpdateFrequency>
+        </maintenance>
+        <contact>
+            <individualName>
+                <givenName>Zhanerke</givenName>
+                <surName>Blyalova</surName>
+            </individualName>
+            <organizationName>Karaganda Buketov University</organizationName>
+            <positionName>senior lecturer</positionName>
+            <address>
+                <deliveryPoint>University street, 28/2</deliveryPoint>
+                <city>Karaganda</city>
+                <administrativeArea>Karaganda region</administrativeArea>
+                <postalCode>100024</postalCode>
+                <country>KAZAKHSTAN</country>
+            </address>
+            <electronicMailAddress>zhanerke1807@mail.ru</electronicMailAddress>
+            <userId directory="https://orcid.org/">0009-0007-9438-5413</userId>
+        </contact>
+        <contact>
+            <individualName>
+                <givenName>Meruyert</givenName>
+                <surName>Blyalova</surName>
+            </individualName>
+            <organizationName>Karaganda Buketov University</organizationName>
+            <positionName>lecturer</positionName>
+            <address>
+                <deliveryPoint>University street, 28/2</deliveryPoint>
+                <city>Karaganda</city>
+                <administrativeArea>Karaganda region</administrativeArea>
+                <postalCode>100024</postalCode>
+                <country>KAZAKHSTAN</country>
+            </address>
+            <electronicMailAddress>meru-nura98@mail.ru</electronicMailAddress>
+        </contact>
+        <methods>
+            <methodStep>
+                <description>
+                    <para>Animalia</para>
+                </description>
+            </methodStep>
+            <sampling>
+                <studyExtent>
+                    <description>
+                        <para>120 species</para>
+                    </description>
+                </studyExtent>
+                <samplingDescription>
+                    <para>Kazakhstan is located between 46°29&apos;37&quot; and 87°18&apos;55&quot; east longitude, 40°34&apos;07&quot; and 55°26&apos;34&quot; north latitude.</para>
+                </samplingDescription>
+            </sampling>
+        </methods>
+
+            <project >
+                <title>Vertebrates Collection of the Karaganda Buketov University Museum of Nature</title>
+                <abstract>
+                    <para>Vertebrates Collection of the Karaganda Buketov University Museum of Nature</para>
+                </abstract>
+                <funding>
+                    <para>The study was carried out with the support of the intra-university grant of Karaganda Buketov University for research work for young scientists on the research topic No. 06-SMU-23 &quot;Building the electronic database of the zoological collection of vertebrates of the Karaganda Buketov University Museum of Nature.</para>
+                </funding>
+                <studyAreaDescription>
+                    <descriptor name="generic" citableClassificationSystem="false">
+                        <descriptorValue>Territory of Kazakhstan</descriptorValue>
+                    </descriptor>
+                </studyAreaDescription>
+                <designDescription>
+                    <description>
+                        <para>https://api.gbif.org/v1/image/unsafe/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1365235063277969415%2Fact3dh-e_400x400.jpg</para>
+                    </description>
+                </designDescription>
+            </project>
+    </dataset>
+
+    <additionalMetadata>
+        <metadata>
+            <gbif>
+                <dateStamp>2025-01-22T21:10:29Z</dateStamp>
+                <citation>Blyalova M, Blyalova Z (2023). Vertebrates Collection of the Karaganda Buketov University Museum of Nature. Version 1.3. Karaganda Buketov University. Occurrence dataset https://doi.org/10.15468/rnwp89 accessed via GBIF.org on 2025-01-22.</citation>
+                <resourceLogoUrl>https://api.gbif.org/v1/image/unsafe/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1365235063277969415%2Fact3dh-e_400x400.jpg</resourceLogoUrl>
+                <formationPeriod>1984-2023</formationPeriod>
+            </gbif>
+        </metadata>
+    </additionalMetadata>
+    </eml:eml>

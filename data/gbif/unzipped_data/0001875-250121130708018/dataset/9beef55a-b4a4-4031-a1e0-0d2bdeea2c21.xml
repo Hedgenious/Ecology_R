@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://rs.gbif.org/schema/eml-gbif-profile/1.3/eml.xsd"
+packageId="9beef55a-b4a4-4031-a1e0-0d2bdeea2c21"  system="http://gbif.org" scope="system"
+xml:lang="en">
+    <dataset>
+        <alternateIdentifier>10.15468/l84hg0</alternateIdentifier>
+        <alternateIdentifier>9beef55a-b4a4-4031-a1e0-0d2bdeea2c21</alternateIdentifier>
+        <alternateIdentifier>https://depo.msu.ru/ipt/resource?r=zmmu</alternateIdentifier>
+        <title>Birds and Mammals Collections of the Zoological Museum of M.V. Lomonosov Moscow State University</title>
+        <creator>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <address>
+                <deliveryPoint>Bolshaya Nikitskaya Str. 2</deliveryPoint>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>yardo@mail.ru</electronicMailAddress>
+            <onlineUrl>http://zmmu.msu.ru</onlineUrl>
+        </creator>
+        <metadataProvider>
+            <individualName>
+                <givenName>Andrey</givenName>
+                <surName>Klyukvin</surName>
+            </individualName>
+            <address>
+                <city>Moscow</city>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>aklukvin@gmail.com</electronicMailAddress>
+        </metadataProvider>
+        <metadataProvider>
+            <individualName>
+                <givenName>Anton</givenName>
+                <surName>Morkovin</surName>
+            </individualName>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <positionName>zoologist</positionName>
+            <address>
+                <deliveryPoint>Bolshaya Nikitskaya Str. 2</deliveryPoint>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>a.morkovin@yandex.com</electronicMailAddress>
+            <onlineUrl>https://istina.msu.ru/profile/Anton_Morkovin/</onlineUrl>
+        </metadataProvider>
+        <associatedParty>
+            <individualName>
+                <givenName>Andrey</givenName>
+                <surName>Klyukvin</surName>
+            </individualName>
+            <electronicMailAddress>aklukvin@gmail.com</electronicMailAddress>
+            <role>USER</role>
+        </associatedParty>
+        <pubDate>
+                2018-11-20
+        </pubDate>
+        <language>RUSSIAN</language>
+        <abstract>
+            <para>The dataset contains information about Birds and Mammals collections stored in the Zoological Museum of M.V. Lomonosov Moscow State University. In total, these collections include about 220K mammal and 150K bird specimens.</para>
+<para>A part of its catalogues is available in an electronic form on the museum website (http://zmmu.msu.ru/dbs/search_start.php; type specimen) and on the online portal of the National Depository Bank of Live Systems (http://animal.depo.msu.ru). In the course of the project ”Supporting data mobilization activities in Russia west of Ural mountains”, funded by the GBIF Secretariat (project code “Russia-01”), the work on digitizing the paper catalogues was continued. The data transformed into an electronic form was published on the GBIF web portal. The dataset includes main information from catalogue cards (species, sex, age, preparation form etc.) as well as coordinates of disposal site (their precision depends on the detail of geographic data provided by collectors).</para>
+<para>The major part of the data represents the European part of Russian Federation; areas covered also include Kazakhstan, Ukraine, Azerbaijan, Georgia, Belarus, Armenia, Germany, Moldova, and Republic of Latvia.</para>
+<para>Note that the precision of coordinates may vary depending on the completeness of the geographical data provided by collectors. Usually, the closest settlement or other geographic feature was reported, so the precision of georeferencing is no more than several kilometres, and can be even less if only administrative region or country was provided.</para>
+        </abstract>
+        <keywordSet>
+            <keyword>Occurrence</keyword>
+            <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type.xml</keywordThesaurus>
+        </keywordSet>
+        <keywordSet>
+            <keyword>Specimen</keyword>
+            <keywordThesaurus>GBIF Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml</keywordThesaurus>
+        </keywordSet>
+        <intellectualRights>
+            <para>This work is licensed under a <ulink url="http://creativecommons.org/licenses/by/4.0/legalcode"><citetitle>Creative Commons Attribution (CC-BY) 4.0 License</citetitle></ulink>.</para>
+        </intellectualRights>
+        <licensed>
+            <licenseName>Creative Commons Attribution 4.0 International</licenseName>
+            <url>https://spdx.org/licenses/CC-BY-4.0.html</url>
+            <identifier>CC-BY-4.0</identifier>
+        </licensed>
+        <distribution scope="document">
+            <online>
+                <url function="information">http://zmmu.msu.ru</url>
+            </online>
+        </distribution>
+        <distribution scope="document">
+            <online>
+                <url function="download">https://depo.msu.ru/ipt/archive.do?r=zmmu</url>
+            </online>
+        </distribution>
+        <coverage>
+            <geographicCoverage>
+                <geographicDescription>The European part of Russian Federation (Arkhangelsk, Astrakhan, Belgorod,
+Ivanovo, Kalmykia, Kaluga, Karelia, Kirov, Komi, Kostroma, Kursk, Lipetsk, Moscow, Moscow, Murmansk, Pskov, Rostov, Ryazan, Samara, Saratov, Smolensk, Tatarstan, Tver, Ulyanovsk, Vladimir, Volgograd, Voronezh, Yaroslavl oblasts (regions); Nenets Autonomous Okrug, Perm Krai, Stavropol Krai), several European countries (Belarus, Germany, Latvia, Republic of Moldova, Ukraine) and some ex-USSR Asian countries: Armenia, Azerbaijan, Georgia, Kazakhstan).</geographicDescription>
+                <boundingCoordinates>
+                    <westBoundingCoordinate>5.801</westBoundingCoordinate>
+                    <eastBoundingCoordinate>87.363</eastBoundingCoordinate>
+                    <northBoundingCoordinate>77.079</northBoundingCoordinate>
+                    <southBoundingCoordinate>39.096</southBoundingCoordinate>
+                </boundingCoordinates>
+            </geographicCoverage>
+            <temporalCoverage>
+                <rangeOfDates>
+                    <beginDate>
+                        <calendarDate>                1844
+</calendarDate>
+                    </beginDate>
+                    <endDate>
+                        <calendarDate>                2017
+</calendarDate>
+                    </endDate>
+                </rangeOfDates>
+            </temporalCoverage>
+            <taxonomicCoverage>
+                <taxonomicClassification>
+                    <taxonRankName>Class</taxonRankName>
+                    <taxonRankValue>Aves</taxonRankValue>
+                    <commonName>Birds</commonName>
+                </taxonomicClassification>
+                <taxonomicClassification>
+                    <taxonRankName>Class</taxonRankName>
+                    <taxonRankValue>Mammalia</taxonRankValue>
+                    <commonName>Mammals</commonName>
+                </taxonomicClassification>
+            </taxonomicCoverage>
+        </coverage>
+        <maintenance>
+            <description>
+                <para></para>
+            </description>
+            <maintenanceUpdateFrequency>irregular</maintenanceUpdateFrequency>
+        </maintenance>
+        <contact>
+            <individualName>
+                <givenName>Mikhail</givenName>
+                <surName>Kalyakin</surName>
+            </individualName>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <positionName>director</positionName>
+            <address>
+                <deliveryPoint>Bolshaya Nikitskaya Str. 2</deliveryPoint>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>kalyakin@zmmu.msu.ru</electronicMailAddress>
+            <onlineUrl>http://istina.msu.ru/profile/kalyakin/</onlineUrl>
+        </contact>
+        <contact>
+            <individualName>
+                <givenName>Pavel</givenName>
+                <surName>Tomkowich</surName>
+            </individualName>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <positionName>Chief of the Section, leading researcher</positionName>
+            <address>
+                <deliveryPoint>Bolshaya Nikitskaya Str. 2</deliveryPoint>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>pst@zmmu.msu.ru</electronicMailAddress>
+            <onlineUrl>http://istina.msu.ru/profile/TomkovichPS/</onlineUrl>
+        </contact>
+        <contact>
+            <individualName>
+                <givenName>Yaroslav</givenName>
+                <surName>Red&apos;kin</surName>
+            </individualName>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <positionName>research officer</positionName>
+            <address>
+                <deliveryPoint>Bolshaya Nikitskaya Str. 2</deliveryPoint>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>yardo@mail.ru</electronicMailAddress>
+            <onlineUrl>http://istina.msu.ru/profile/RedkinYaA/</onlineUrl>
+        </contact>
+        <contact>
+            <individualName>
+                <givenName>Sergei</givenName>
+                <surName>Kruskop</surName>
+            </individualName>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <positionName>Chief of the Section, senior researcher</positionName>
+            <address>
+                <deliveryPoint>Bolshaya Nikitskaya Str. 2</deliveryPoint>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+                <country>RUSSIAN_FEDERATION</country>
+            </address>
+            <electronicMailAddress>kruskop@zmmu.msu.ru</electronicMailAddress>
+            <onlineUrl>http://istina.msu.ru/profile/skruskop/</onlineUrl>
+        </contact>
+        <contact>
+            <individualName>
+                <givenName>Vladimir</givenName>
+                <surName>Lebedev</surName>
+            </individualName>
+            <organizationName>Zoological museum of M.V. Lomonosov Moscow State University</organizationName>
+            <positionName>Researcher</positionName>
+            <address>
+                <city>Moscow</city>
+                <postalCode>125009</postalCode>
+            </address>
+            <electronicMailAddress>wslebedew@mail.ru</electronicMailAddress>
+            <onlineUrl>http://istina.msu.ru/profile/Lebedev_WS/</onlineUrl>
+        </contact>
+
+            <project id="Russia-01">
+                <title>Supporting data mobilization activities in Russia west of Ural mountains</title>
+                <personnel>
+                    <individualName>
+                    <givenName>Anton</givenName>
+                    <surName>Morkovin</surName>
+                    </individualName>
+                    <role>PROCESSOR</role>
+                </personnel>
+                <abstract>
+                    <para>The purpose of this project was to make a significant part of Zoological Museum of Moscow University vertebrate collections catalogues available online via the GBIF website.</para>
+                </abstract>
+                <funding>
+                    <para>The work on digitizing of collections catalogues cards was funded by The Global Biodiversity Information Facility Secretariat (GBIFS).</para>
+                </funding>
+                <studyAreaDescription>
+                    <descriptor name="generic" citableClassificationSystem="false">
+                        <descriptorValue>The collections of birds and mammals stored in the Zoological Museum of Moscow University contain preserved specimens from the European part of Russia, several ex-USSR and European countries.</descriptorValue>
+                    </descriptor>
+                </studyAreaDescription>
+                <designDescription>
+                    <description>
+                        <para>In the course of the project, about 54 th. paper catalogue cards were transformed into an electronic form. The main information about the specimens was manually inserted into a database. For every record, the coordinates were found based on the geographical information about capturing site provided by collectors. The precision of the coordinates may vary depending on the completeness of geographic data. The base was published as a dataset on the GBIF website.</para>
+                    </description>
+                </designDescription>
+            </project>
+    </dataset>
+
+    <additionalMetadata>
+        <metadata>
+            <gbif>
+                <dateStamp>2025-01-22T21:10:52Z</dateStamp>
+                <citation>Lomonosov Moscow State University (2018). Birds and Mammals Collections of the Zoological Museum of M.V. Lomonosov Moscow State University. Version 1.14. Occurrence dataset https://doi.org/10.15468/l84hg0 accessed via GBIF.org on 2025-01-22.</citation>
+                <resourceLogoUrl>http://zmmu.msu.ru/files/design/logo.png</resourceLogoUrl>
+            </gbif>
+        </metadata>
+    </additionalMetadata>
+    </eml:eml>
