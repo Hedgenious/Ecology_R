@@ -1,4 +1,4 @@
-##### E:/R/Astro_Sync/R/code_formatting/code_standarts.R #####
+# "E:/R/Ecology_R"
 # ============================================================
 # 🟢 АНАЛИЗ НАБЛЮДЕНИЙ БОЛЬШОЙ СИНИЦЫ В КАЗАХСТАНЕ [2025-03-27]
 # ============================================================
@@ -10,10 +10,12 @@
 # ============================================================
 
 
+
 # ============================================================
 # 🟢 ЭТАП 1: УСТАНОВКА И ЗАГРУЗКА ПАКЕТОВ [2025-03-27]
 # ============================================================
 cat("\n🟢 [2025-03-27] ЭТАП 1: Установка и загрузка пакетов...\n")
+
 
 if (!requireNamespace("tibble", quietly = TRUE)) install.packages("tibble")
 if (!requireNamespace("readr", quietly = TRUE)) install.packages("readr")
@@ -41,7 +43,7 @@ cat("\n🟢 [2025-03-27] ЭТАП 2: Установка рабочей дире�
 
 # Укажите при необходимости другой путь
 setwd("E:/R/Ecology_R/data/gbif/unzipped_data/0001857-250121130708018/")
-
+getwd()
 
 # ============================================================
 # 🟢 ЭТАП 3: ЗАГРУЗКА ДАННЫХ И ПРЕОБРАЗОВАНИЕ [2025-03-27]
@@ -51,13 +53,28 @@ cat("\n🟢 [2025-03-27] ЭТАП 3: Загрузка RDS-файла, преоб
 # Загрузка RDS файла с данными наблюдений и преобразование в tibble
 occurrence_data <- readRDS("occurrence_data.rds")
 occurrence_tbl <- as_tibble(occurrence_data)
+occurrence_tbl %>% colnames()
 
 # Подвыборка ключевых столбцов с детальной информацией
 observations_subset <- occurrence_tbl %>%
   select(
-    eventDate, year, month, day,
-    decimalLatitude, decimalLongitude, coordinateUncertaintyInMeters,
-    genus, specificEpithet, infraspecificEpithet, speciesKey, scientificName
+    eventDate,
+    year,
+    month,
+    day,
+    
+    eventTime,
+    
+    decimalLatitude, # широта
+    decimalLongitude, # долгота
+    
+    coordinateUncertaintyInMeters,
+    
+    genus,
+    specificEpithet,
+    scientificName,
+    
+    speciesKey
   )
 
 # Преобразуем eventDate в формат Date, добавляем столбец weekday
@@ -67,7 +84,7 @@ observations_subset <- observations_subset %>%
     weekday   = weekdays(eventDate)
   )
 
-
+observations_subset$weekday
 # ============================================================
 # 🟢 ЭТАП 4: РАСЧЁТ СТАТИСТИК [2025-03-27]
 # ============================================================
@@ -87,7 +104,7 @@ year_summary <- observations_subset %>%
   summarise(observation_count = n()) %>%
   arrange(year)
 cat("\nСтатистика по годам (количество наблюдений):\n")
-print(year_summary)
+print(year_summary, n = 100)
 
 # 3. Статистика по месяцам
 month_summary <- observations_subset %>%
@@ -114,7 +131,7 @@ observations_with_coords <- observations_subset %>%
   nrow()
 total_obs <- nrow(observations_subset)
 cat("\nКоличество наблюдений с координатами:", observations_with_coords, "\n")
-cat("Процент наблюдений с координатами:", round((observations_with_coords / total_obs) * 100, 2), "%\n")
+cat("Процент наблюдений с координатами:", round((observations_with_coords / total_obs) * 100, 3), "%\n")
 
 # 6. Статистика по родам
 genus_summary <- observations_subset %>%
@@ -134,6 +151,9 @@ coordinate_uncertainty_stats <- observations_subset %>%
 cat("\nСтатистика по точности координат (coordinateUncertaintyInMeters):\n")
 print(coordinate_uncertainty_stats)
 
+observations_subset$coordinateUncertaintyInMeters %>% summary()
+observations_subset$coordinateUncertaintyInMeters %>% length()
+
 # 8. Статистика по региону (stateProvince), если данные заполнены
 if ("stateProvince" %in% colnames(occurrence_tbl)) {
   state_summary <- occurrence_tbl %>%
@@ -142,7 +162,7 @@ if ("stateProvince" %in% colnames(occurrence_tbl)) {
     summarise(observation_count = n()) %>%
     arrange(desc(observation_count))
   cat("\nСтатистика по штатам/регионам (stateProvince):\n")
-  print(state_summary)
+  print(state_summary, n = 100)
 }
 
 # 9. Статистика по статусу наблюдений (occurrenceStatus)
@@ -191,12 +211,22 @@ ggplot(year_summary, aes(x = as.factor(year), y = observation_count)) +
   theme_classic() +
   theme(plot.title = element_text(hjust = 0.5))
 
+
+month_summary  <-  month_summary %>% 
+  filter(is.na(month) != TRUE)
+
 # 3. Количество наблюдений по месяцам
 ggplot(month_summary, aes(x = as.factor(month), y = observation_count)) +
-  geom_bar(stat = "identity", fill = "forestgreen") +
-  labs(title = "Количество наблюдений по месяцам", x = "Месяц", y = "Количество наблюдений") +
+  geom_bar(stat = "identity", 
+           fill = "forestgreen") +
+  labs(title = "Количество наблюдений по месяцам", 
+       x = "Месяц", 
+       y = "Количество наблюдений") +
   theme_classic() +
   theme(plot.title = element_text(hjust = 0.5))
+
+
+
 
 # 4. Географическое распределение наблюдений (точки)
 observations_coords <- observations_subset %>% filter(!is.na(decimalLatitude) & !is.na(decimalLongitude))
@@ -263,11 +293,11 @@ kaz_bbox <- st_bbox(kazakhstan)
 
 # Строим карту, гарантируя, что весь контур Казахстана виден
 ggplot() +
-  geom_sf(data = kazakhstan, fill = "antiquewhite", color = "gray40") +
+  geom_sf(data = kazakhstan, fill = "lightblue", color = "black") +
   geom_point(
     data = observations_coords,
     aes(x = decimalLongitude, y = decimalLatitude),
-    color = "blue", alpha = 0.6, size = 1.5
+    color = "red3", alpha = 0.6, size = 1.5
   ) +
   labs(title = "Карта наблюдений в Казахстане", x = "Долгота", y = "Широта") +
   coord_sf(

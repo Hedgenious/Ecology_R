@@ -1,0 +1,461 @@
+
+
+---
+  title: "Анализ данных наблюдений GBIF"
+author: "Vampurr"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+  toc: true
+toc_float: true
+theme: cerulean
+toc_depth: 3
+params:
+  data_directory: "." # Значение по умолчанию, будет перезаписано из основного скрипта
+---
+  
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6)
+
+# Получаем имя директории для заголовка отчета
+report_title <- paste("Анализ данных GBIF для:", basename(params$data_directory))
+
+r report_title
+🟢 ЭТАП 1: ЗАГРУЗКА ПАКЕТОВ
+cat("\n🟢 [", Sys.Date(), "] ЭТАП 1: Загрузка пакетов...\n")
+
+# Пакеты должны быть уже установлены основным скриптом
+library(tibble)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(sf)
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-1-load-packages}
+IGNORE_WHEN_COPYING_END
+🟢 ЭТАП 2: УСТАНОВКА РАБОЧЕЙ ДИРЕКТОРИИ И ЗАГРУЗКА ДАННЫХ
+cat("\n🟢 [", Sys.Date(), "] ЭТАП 2: Установка рабочей директории и загрузка данных...\n")
+
+# Используем параметр, переданный из основного скрипта
+WORK_DIR <- params$data_directory
+setwd(WORK_DIR)
+cat("Рабочая директория:", getwd(), "\n")
+
+rds_file <- file.path(WORK_DIR, "occurrence_data.rds")
+
+if (!file.exists(rds_file)) {
+  stop("Файл occurrence_data.rds не найден в директории: ", WORK_DIR)
+}
+
+occurrence_data <- readRDS(rds_file)
+occurrence_tbl <- as_tibble(occurrence_data)
+
+cat("Данные успешно загружены. Количество строк:", nrow(occurrence_tbl), "\n")
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-2-load-data}
+IGNORE_WHEN_COPYING_END
+🟢 ЭТАП 3: ПРЕОБРАЗОВАНИЕ ДАННЫХ
+cat("\n🟢 [", Sys.Date(), "] ЭТАП 3: Преобразование данных...\n")
+
+# Подвыборка ключевых столбцов
+# Добавляем проверку на существование столбцов перед выбором
+required_cols <- c("eventDate", "year", "month", "day", "decimalLatitude",
+                   "decimalLongitude", "coordinateUncertaintyInMeters",
+                   "genus", "specificEpithet", "scientificName", "speciesKey")
+available_cols <- intersect(required_cols, colnames(occurrence_tbl))
+missing_cols <- setdiff(required_cols, available_cols)
+if (length(missing_cols) > 0) {
+  cat("Предупреждение: Отсутствуют столбцы:", paste(missing_cols, collapse=", "), "\n")
+}
+
+observations_subset <- occurrence_tbl %>%
+  select(any_of(available_cols)) # Используем any_of для игнорирования отсутствующих
+
+# Преобразование eventDate и добавление weekday, если столбец есть
+if ("eventDate" %in% colnames(observations_subset)) {
+  observations_subset <- observations_subset %>%
+    mutate(
+      # Добавляем обработку ошибок на случай неверного формата даты
+      eventDate_parsed = suppressWarnings(as.Date(eventDate, format = "%Y-%m-%d")),
+      weekday = ifelse(!is.na(eventDate_parsed), weekdays(eventDate_parsed), NA)
+    )
+} else {
+  cat("Столбец eventDate отсутствует, день недели не будет рассчитан.\n")
+}
+
+# Выводим первые строки для проверки
+head(observations_subset)
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-3-transform-data}
+IGNORE_WHEN_COPYING_END
+🟢 ЭТАП 4: РАСЧЁТ СТАТИСТИК
+cat("\n🟢 [", Sys.Date(), "] ЭТАП 4: Расчёт статистических сводок...\n")
+
+# --- 1. Статистика по видам ---
+if ("scientificName" %in% colnames(observations_subset)) {
+  species_count <- observations_subset %>%
+    filter(!is.na(scientificName)) %>%
+    group_by(scientificName) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    arrange(desc(observation_count))
+  cat("\nСтатистика по количеству наблюдений для каждого вида:\n")
+  print(head(species_count)) # Показываем топ
+}
+
+# --- 2. Статистика по годам ---
+if ("year" %in% colnames(observations_subset)) {
+  year_summary <- observations_subset %>%
+    filter(!is.na(year)) %>%
+    group_by(year) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    arrange(year)
+  cat("\nСтатистика по годам (количество наблюдений):\n")
+  print(year_summary, n = Inf) # Показываем все
+}
+
+# --- 3. Статистика по месяцам ---
+if ("month" %in% colnames(observations_subset)) {
+  month_summary <- observations_subset %>%
+    filter(!is.na(month) & month >= 1 & month <= 12) %>% # Добавлена проверка корректности месяца
+    group_by(month) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    arrange(month)
+  cat("\nСтатистика по месяцам (количество наблюдений):\n")
+  print(month_summary)
+}
+
+# --- 4. Статистика по координатам ---
+if ("decimalLatitude" %in% colnames(observations_subset) && "decimalLongitude" %in% colnames(observations_subset)) {
+  coordinates_stats <- observations_subset %>%
+    summarise(
+      min_latitude  = min(decimalLatitude, na.rm = TRUE),
+      max_latitude  = max(decimalLatitude, na.rm = TRUE),
+      min_longitude = min(decimalLongitude, na.rm = TRUE),
+      max_longitude = max(decimalLongitude, na.rm = TRUE),
+      .groups = 'drop'
+    )
+  cat("\nСтатистика по координатам:\n")
+  print(coordinates_stats)
+  
+  # --- 5. Количество наблюдений с координатами ---
+  observations_with_coords_count <- observations_subset %>%
+    filter(!is.na(decimalLatitude) & !is.na(decimalLongitude)) %>%
+    nrow()
+  total_obs <- nrow(observations_subset)
+  cat("\nКоличество наблюдений с координатами:", observations_with_coords_count, "\n")
+  if (total_obs > 0) {
+    cat("Процент наблюдений с координатами:", round((observations_with_coords_count / total_obs) * 100, 2), "%\n")
+  }
+}
+
+# --- 6. Статистика по родам ---
+if ("genus" %in% colnames(observations_subset)) {
+  genus_summary <- observations_subset %>%
+    filter(!is.na(genus)) %>%
+    group_by(genus) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    arrange(desc(observation_count))
+  cat("\nСтатистика по родам:\n")
+  print(head(genus_summary))
+}
+
+# --- 7. Статистика по точности координат ---
+if ("coordinateUncertaintyInMeters" %in% colnames(observations_subset)) {
+  coordinate_uncertainty_stats <- observations_subset %>%
+    summarise(
+      mean_uncertainty   = mean(coordinateUncertaintyInMeters, na.rm = TRUE),
+      median_uncertainty = median(coordinateUncertaintyInMeters, na.rm = TRUE),
+      sd_uncertainty     = sd(coordinateUncertaintyInMeters, na.rm = TRUE),
+      min_uncertainty    = min(coordinateUncertaintyInMeters, na.rm = TRUE),
+      max_uncertainty    = max(coordinateUncertaintyInMeters, na.rm = TRUE),
+      na_count           = sum(is.na(coordinateUncertaintyInMeters)),
+      .groups = 'drop'
+    )
+  cat("\nСтатистика по точности координат (coordinateUncertaintyInMeters):\n")
+  print(coordinate_uncertainty_stats)
+  # print(summary(observations_subset$coordinateUncertaintyInMeters))
+}
+
+# --- 8. Статистика по региону (stateProvince) ---
+if ("stateProvince" %in% colnames(occurrence_tbl)) {
+  state_summary <- occurrence_tbl %>%
+    filter(!is.na(stateProvince) & stateProvince != "") %>%
+    group_by(stateProvince) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    arrange(desc(observation_count))
+  cat("\nСтатистика по штатам/регионам (stateProvince):\n")
+  print(state_summary, n = Inf)
+}
+
+# --- 9. Статистика по статусу наблюдений (occurrenceStatus) ---
+if ("occurrenceStatus" %in% colnames(occurrence_tbl)) {
+  occurrence_status_summary <- occurrence_tbl %>%
+    group_by(occurrenceStatus) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    arrange(desc(observation_count))
+  cat("\nСтатистика по статусу наблюдений (occurrenceStatus):\n")
+  print(occurrence_status_summary)
+}
+
+# --- 10. Распределение наблюдений по дням недели ---
+if ("weekday" %in% colnames(observations_subset)) {
+  weekday_summary <- observations_subset %>%
+    filter(!is.na(weekday)) %>%
+    group_by(weekday) %>%
+    summarise(observation_count = n(), .groups = 'drop') %>%
+    # Упорядочиваем дни недели правильно
+    mutate(weekday = factor(weekday, levels = c("понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье",
+                                                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"))) %>%
+    arrange(weekday)
+  cat("\nСтатистика по дням недели:\n")
+  print(weekday_summary)
+}
+
+# --- 11. Количество уникальных видов ---
+if ("scientificName" %in% colnames(observations_subset)) {
+  unique_species_count <- observations_subset %>%
+    filter(!is.na(scientificName)) %>%
+    distinct(scientificName) %>%
+    nrow()
+  cat("\nКоличество уникальных видов:", unique_species_count, "\n")
+}
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-4-stats}
+IGNORE_WHEN_COPYING_END
+🟢 ЭТАП 5: ПОСТРОЕНИЕ ГРАФИКОВ
+cat("\n🟢 [", Sys.Date(), "] ЭТАП 5: Построение графиков...\n")
+
+# Устанавливаем единую тему для графиков
+theme_set(theme_classic() + theme(plot.title = element_text(hjust = 0.5)))
+
+# --- 1. Топ-10 видов ---
+if (exists("species_count") && nrow(species_count) > 0) {
+  top_species <- species_count %>% slice_head(n = 10)
+  p1 <- ggplot(top_species, aes(x = reorder(scientificName, observation_count), y = observation_count)) +
+    geom_bar(stat = "identity", fill = "steelblue") +
+    coord_flip() +
+    labs(title = "Топ 10 видов по количеству наблюдений", x = "Научное название", y = "Количество наблюдений")
+  print(p1)
+}
+
+# --- 2. Количество наблюдений по годам ---
+if (exists("year_summary") && nrow(year_summary) > 0) {
+  p2 <- ggplot(year_summary, aes(x = as.factor(year), y = observation_count)) +
+    geom_bar(stat = "identity", fill = "tomato") +
+    labs(title = "Количество наблюдений по годам", x = "Год", y = "Количество наблюдений") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Поворот подписей, если их много
+  print(p2)
+}
+
+# --- 3. Количество наблюдений по месяцам ---
+if (exists("month_summary") && nrow(month_summary) > 0) {
+  p3 <- ggplot(month_summary, aes(x = factor(month, levels = 1:12), y = observation_count)) + # Гарантируем порядок месяцев
+    geom_bar(stat = "identity", fill = "forestgreen") +
+    labs(title = "Количество наблюдений по месяцам", x = "Месяц", y = "Количество наблюдений") +
+    scale_x_discrete(labels = month.abb[1:12]) # Используем аббревиатуры месяцев
+  print(p3)
+}
+
+# --- 4. Географическое распределение наблюдений (точки) ---
+if (exists("observations_with_coords_count") && observations_with_coords_count > 0) {
+  observations_coords_sf <- observations_subset %>%
+    filter(!is.na(decimalLatitude) & !is.na(decimalLongitude)) %>%
+    st_as_sf(coords = c("decimalLongitude", "decimalLatitude"), crs = 4326) # Преобразуем в sf объект
+  
+  # Используем карту мира для контекста
+  world <- ne_countries(scale = "medium", returnclass = "sf")
+  
+  # Определяем границы по точкам данных
+  bbox_data <- st_bbox(observations_coords_sf)
+  
+  # Расширяем границы немного для лучшей визуализации
+  expand_factor = 0.1 # 10% расширение
+  xlim_dynamic = c(bbox_data$xmin - (bbox_data$xmax - bbox_data$xmin) * expand_factor,
+                   bbox_data$xmax + (bbox_data$xmax - bbox_data$xmin) * expand_factor)
+  ylim_dynamic = c(bbox_data$ymin - (bbox_data$ymax - bbox_data$ymin) * expand_factor,
+                   bbox_data$ymax + (bbox_data$ymax - bbox_data$ymin) * expand_factor)
+  
+  # Ограничиваем границы разумными пределами широты/долготы
+  xlim_dynamic[1] <- max(xlim_dynamic[1], -180)
+  xlim_dynamic[2] <- min(xlim_dynamic[2], 180)
+  ylim_dynamic[1] <- max(ylim_dynamic[1], -90)
+  ylim_dynamic[2] <- min(ylim_dynamic[2], 90)
+  
+  
+  p4 <- ggplot() +
+    geom_sf(data = world, fill = "gray85", color = "white", size = 0.2) + # Карта мира фоном
+    geom_sf(data = observations_coords_sf, color = "purple", alpha = 0.5, size = 1) + # Точки наблюдений
+    coord_sf(xlim = xlim_dynamic, ylim = ylim_dynamic, expand = FALSE) + # Динамические границы
+    labs(title = "Географическое распределение наблюдений", x = "Долгота", y = "Широта")
+  print(p4)
+} else {
+  cat ("\nНет данных с координатами для построения карты точек.\n")
+}
+
+
+# --- 5. Топ-10 родов ---
+if (exists("genus_summary") && nrow(genus_summary) > 0) {
+  top_genus <- genus_summary %>% slice_head(n = 10)
+  p5 <- ggplot(top_genus, aes(x = reorder(genus, observation_count), y = observation_count)) +
+    geom_bar(stat = "identity", fill = "orange") +
+    coord_flip() +
+    labs(title = "Топ 10 родов по количеству наблюдений", x = "Род", y = "Количество наблюдений")
+  print(p5)
+}
+
+# --- 6. Гистограмма распределения точности координат ---
+if (exists("coordinate_uncertainty_stats") && !is.na(coordinate_uncertainty_stats$median_uncertainty)) {
+  # Ограничим диапазон для наглядности, например, до 10 км, и покажем выбросы отдельно
+  uncertainty_subset <- observations_subset %>%
+    filter(!is.na(coordinateUncertaintyInMeters))
+  
+  max_uncertainty_plot <- min(max(uncertainty_subset$coordinateUncertaintyInMeters, na.rm=TRUE), 10000) # Ограничим 10км
+  
+  p6 <- ggplot(uncertainty_subset, aes(x = coordinateUncertaintyInMeters)) +
+    geom_histogram(binwidth = max_uncertainty_plot / 50, fill = "cyan", color = "black") + # 50 бинов
+    scale_x_continuous(limits = c(0, max_uncertainty_plot)) + # Ограничиваем ось X
+    labs(title = paste("Распределение точности координат (до", max_uncertainty_plot, "м)"),
+         x = "Неопределенность координат (м)", y = "Количество наблюдений")
+  print(p6)
+  
+  # Дополнительно: сколько наблюдений имеют большую неопределенность?
+  high_uncertainty_count <- uncertainty_subset %>%
+    filter(coordinateUncertaintyInMeters > max_uncertainty_plot) %>% nrow()
+  if (high_uncertainty_count > 0) {
+    cat("\nКоличество наблюдений с неопределенностью координат >", max_uncertainty_plot, "м:", high_uncertainty_count, "\n")
+  }
+  
+}
+
+# --- 7. Наблюдения по штатам/регионам ---
+if (exists("state_summary") && nrow(state_summary) > 0) {
+  # Показываем топ N регионов, если их много
+  top_n_states <- min(nrow(state_summary), 20)
+  state_summary_top <- state_summary %>% slice_head(n = top_n_states)
+  
+  p7 <- ggplot(state_summary_top, aes(x = reorder(stateProvince, observation_count), y = observation_count)) +
+    geom_bar(stat = "identity", fill = "skyblue") +
+    coord_flip() +
+    labs(title = paste("Топ", top_n_states, "регионов по количеству наблюдений"),
+         x = "Штат/Регион", y = "Количество наблюдений")
+  print(p7)
+}
+
+# --- 8. Статус наблюдений ---
+if (exists("occurrence_status_summary") && nrow(occurrence_status_summary) > 0) {
+  p8 <- ggplot(occurrence_status_summary, aes(x = reorder(occurrenceStatus, observation_count), y = observation_count)) +
+    geom_bar(stat = "identity", fill = "pink") +
+    coord_flip() +
+    labs(title = "Статус наблюдений", x = "Статус", y = "Количество наблюдений")
+  print(p8)
+}
+
+# --- 9. Наблюдения по дням недели ---
+if (exists("weekday_summary") && nrow(weekday_summary) > 0) {
+  p9 <- ggplot(weekday_summary, aes(x = weekday, y = observation_count)) +
+    geom_bar(stat = "identity", fill = "magenta") +
+    labs(title = "Количество наблюдений по дням недели", x = "День недели", y = "Количество наблюдений") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  print(p9)
+}
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-5-plots}
+IGNORE_WHEN_COPYING_END
+🟢 ЭТАП 6: ПОСТРОЕНИЕ КАРТЫ НАБЛЮДЕНИЙ (ЕСЛИ КАЗАХСТАН)
+cat("\n🟢 [", Sys.Date(), "] ЭТАП 6: Построение карты наблюдений (пример для Казахстана)...\n")
+
+# Этот блок можно адаптировать или сделать условным, если анализ не всегда по Казахстану
+
+# Проверяем, есть ли наблюдения с координатами
+if (exists("observations_with_coords_count") && observations_with_coords_count > 0) {
+  observations_coords_sf <- observations_subset %>%
+    filter(!is.na(decimalLatitude) & !is.na(decimalLongitude)) %>%
+    st_as_sf(coords = c("decimalLongitude", "decimalLatitude"), crs = 4326)
+  
+  # Попробуем определить, находятся ли точки в Казахстане
+  kazakhstan <- ne_countries(country = "Kazakhstan", scale = "medium", returnclass = "sf")
+  kaz_bbox <- st_bbox(kazakhstan)
+  
+  # Проверим, попадают ли точки данных в границы Казахстана (примерно)
+  points_in_kaz <- observations_coords_sf %>%
+    filter(
+      st_coordinates(geometry)[,1] >= kaz_bbox$xmin & st_coordinates(geometry)[,1] <= kaz_bbox$xmax &
+        st_coordinates(geometry)[,2] >= kaz_bbox$ymin & st_coordinates(geometry)[,2] <= kaz_bbox$ymax
+    )
+  
+  # Если значительная часть точек в Казахстане, строим карту для него
+  # Порог можно настроить, например > 50% точек или > 10 точек
+  if (nrow(points_in_kaz) > 10 || (nrow(observations_coords_sf) > 0 && nrow(points_in_kaz) / nrow(observations_coords_sf) > 0.5) ) {
+    cat("Построение карты для Казахстана...\n")
+    map_kaz <- ggplot() +
+      geom_sf(data = kazakhstan, fill = "lightblue", color = "black", size = 0.3) +
+      geom_sf(
+        data = observations_coords_sf, # Используем все точки, но центрируемся на КЗ
+        color = "red3", alpha = 0.6, size = 1.5
+      ) +
+      labs(title = "Карта наблюдений (фокус на Казахстане)", x = "Долгота", y = "Широта") +
+      # Используем границы КЗ для установки пределов карты
+      coord_sf(
+        xlim = c(kaz_bbox$xmin, kaz_bbox$xmax),
+        ylim = c(kaz_bbox$ymin, kaz_bbox$ymax),
+        expand = TRUE # Немного расширим границы
+      ) +
+      theme_classic() +
+      theme(plot.title = element_text(hjust = 0.5))
+    print(map_kaz)
+  } else {
+    cat("Наблюдения, похоже, не относятся к Казахстану. Пропуск карты КЗ.\n")
+    # Можно добавить построение общей карты мира, если карта КЗ не строится (как в шаге 5, график 4)
+    if (!exists("p4")) { # Если общая карта еще не была построена
+      world <- ne_countries(scale = "medium", returnclass = "sf")
+      bbox_data <- st_bbox(observations_coords_sf)
+      expand_factor = 0.1
+      xlim_dynamic = c(bbox_data$xmin - (bbox_data$xmax - bbox_data$xmin) * expand_factor, bbox_data$xmax + (bbox_data$xmax - bbox_data$xmin) * expand_factor)
+      ylim_dynamic = c(bbox_data$ymin - (bbox_data$ymax - bbox_data$ymin) * expand_factor, bbox_data$ymax + (bbox_data$ymax - bbox_data$ymin) * expand_factor)
+      xlim_dynamic[1] <- max(xlim_dynamic[1], -180); xlim_dynamic[2] <- min(xlim_dynamic[2], 180)
+      ylim_dynamic[1] <- max(ylim_dynamic[1], -90); ylim_dynamic[2] <- min(ylim_dynamic[2], 90)
+      
+      p4_fallback <- ggplot() +
+        geom_sf(data = world, fill = "gray85", color = "white", size = 0.2) +
+        geom_sf(data = observations_coords_sf, color = "purple", alpha = 0.5, size = 1) +
+        coord_sf(xlim = xlim_dynamic, ylim = ylim_dynamic, expand = FALSE) +
+        labs(title = "Географическое распределение наблюдений (Общая карта)", x = "Долгота", y = "Широта")
+      print(p4_fallback)
+    }
+  }
+} else {
+  cat("Нет данных с координатами для построения карты Казахстана.\n")
+}
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-6-map-kaz}
+IGNORE_WHEN_COPYING_END
+✅ ЗАВЕРШЕНИЕ ОТЧЕТА
+cat("\n✅ [", Sys.Date(), "] Отчет успешно сгенерирован для директории:", basename(params$data_directory), "\n")
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+{r step-7-end}
+IGNORE_WHEN_COPYING_END
+
