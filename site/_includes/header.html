@@ -1,11 +1,17 @@
-<header class="site-header" role="banner">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<header class="site-header" role="banner" x-data="{ open: false }" @resize.window="if (window.innerWidth > 720) open = false">
   <div class="wrapper nav-wrapper">
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
 
     {% assign current = page.url | replace: 'index.html', '' %}
 
-    <nav class="site-nav custom-nav" aria-label="Основная навигация">
-      <ul class="nav-list">
+    <button class="nav-toggle" type="button" @click="open = !open" :aria-expanded="open.toString()" aria-controls="main-nav" aria-label="Открыть меню">
+      Меню
+    </button>
+
+    <nav id="main-nav" class="site-nav custom-nav" :class="{ 'is-open': open }" aria-label="Основная навигация">
+      <ul class="nav-list" @click="open = false">
         <li><a class="nav-link{% if current == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">Главная</a></li>
         <li><a class="nav-link{% if current contains '/lessons/' %} active{% endif %}" href="{{ '/lessons/' | relative_url }}">Занятия</a></li>
         <li><a class="nav-link{% if current contains '/hometasks/' %} active{% endif %}" href="{{ '/hometasks/' | relative_url }}">Домашние задания</a></li>
