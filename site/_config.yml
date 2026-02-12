@@ -1,0 +1,7 @@
+title: Ecology R Course
+description: Учебные материалы курса по анализу экологических данных в R
+lang: ru
+url: "https://hedgenious.github.io"
+baseurl: "/Ecology_R"
+markdown: kramdown
+theme: minima

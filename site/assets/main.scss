@@ -1,0 +1,147 @@
+---
+---
+
+@import "minima";
+
+:root {
+  --bg-soft: #f7f9fc;
+  --surface: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #5b6473;
+  --line: #e2e8f0;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+}
+
+body {
+  color: var(--text-main);
+  background: linear-gradient(180deg, #fcfdff 0%, #f8fbff 100%);
+}
+
+.page-content {
+  padding-top: 1.5rem;
+}
+
+.wrapper {
+  max-width: 1080px;
+}
+
+h1, h2, h3 {
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 2.3vw, 2.1rem);
+  line-height: 1.25;
+}
+
+h2 {
+  margin-top: 2rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.65rem;
+}
+
+.micro-note {
+  margin-top: -0.3rem;
+  margin-bottom: 1.15rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+  margin: 0.9rem 0 1.5rem;
+}
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  box-shadow: 0 8px 20px rgba(25, 35, 70, 0.06);
+  text-decoration: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #b9c9eb;
+  box-shadow: 0 10px 24px rgba(25, 35, 70, 0.12);
+}
+
+.card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+}
+
+.card p {
+  margin: 0 0 0.45rem;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  line-height: 1.38;
+}
+
+.card small {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.section-block {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  margin: 0.7rem 0 1.25rem;
+}
+
+.clean-list {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.clean-list li {
+  margin: 0.38rem 0;
+}
+
+.tiny-note {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+a {
+  text-underline-offset: 0.14em;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 720px) {
+  .site-title {
+    font-size: 1rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-block {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .post-content {
+    font-size: 0.98rem;
+  }
+
+  .tiny-note,
+  .micro-note {
+    font-size: 0.77rem;
+  }
+}

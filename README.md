@@ -24,37 +24,41 @@
 
 ### Занятие 1 (16.01.2025)
 
--   [Руководство к занятию 1 ](site/lessons/lesson_1.md)
+-   [Руководство к занятию 1 ](site/lessons/lesson-01/)
 
 ### Занятие 2 (23.01.2025)
 
--   [Руководство к занятию 2 ](site/lessons/lesson_2.md)
+-   [Руководство к занятию 2 ](site/lessons/lesson-02/)
 -   [Домашнее задание к занятию 2](site/hometasks/hometask_2.md)
 -   [Решение домашнего задания 2 (текст)](site/hometasks/hometask_2_solution.md)
 -   [Решение домашнего задания 2 в виде файла .R (скачать)](site/hometasks/hometask_2_solution.R)
 
 ### Занятие 3 (30.01.2025)
 
--   [Руководство к занятию 3 готовится...](site/lessons/lesson_3.md)
--   [Код с занятия 3 (текст)](site/lessons/lesson_3_code.md)
--   [Код с занятия 3 в виде файла .R (скачать)](site/lessons/lesson_3_code.R)
+-   [Материалы занятия 3](site/lessons/lesson-03/)
+-   [Код с занятия 3 в виде файла .R (скачать)](site/lessons/lesson-03/lesson_3_code.R)
 
 
 ### Занятие 4 (19.02.2025)
 
--   [Задания к занятию 4](site/lessons/lesson_4.md)
+-   [Задания к занятию 4](site/lessons/lesson-04/)
 -   Заранее представляются занятия для ознакомления, можно распечатать и использовать во время занятия. Будем подробно разбирать решения во время занятия 4.
 
 ### Занятие 5 (27.02.2025)
--   [Руководство к занятию 5](site/lessons/lesson_5.md)
+-   [Руководство к занятию 5](site/lessons/lesson-05/)
 -   [tidyr cheatsheet](site/cheatsheets/tidyr.pdf)
 -   [dplyr cheatsheet](site/cheatsheets/data-transformation.pdf)
 
 
 ### Занятие 6 (13.03.2025)
+-   [Материалы занятия 6](site/lessons/lesson-06/)
 -   [Галерея графиков](https://r-graph-gallery.com/)
 -   [ggplot2 cheatsheet](site/cheatsheets/data-visualization.pdf)
 -   [Именованные цвета](site/cheatsheets/colorbynames.png)
+
+
+### Занятие 7 (27.03.2025)
+-   [Материалы занятия 7](site/lessons/lesson-07/)
 
 
 

@@ -1,4 +1,7 @@
-
+---
+layout: default
+title: "Занятие 5"
+---
 
 # Введение в tidyverse и dplyr в R
 
