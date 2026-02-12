@@ -47,6 +47,16 @@ title: "Курс Ecology & R"
 	</a>
 </div>
 
+## Разделы сайта
+
+<div class="section-block">
+	<ul class="clean-list">
+		<li><a href="lessons/">Занятия</a> <span class="tiny-note">— полный каталог всех уроков с материалами.</span></li>
+		<li><a href="hometasks/">Домашние задания</a> <span class="tiny-note">— задания и решения в одном разделе.</span></li>
+		<li><a href="resourses/">Учебные ресурсы</a> <span class="tiny-note">— шпаргалки и PDF-материалы курса.</span></li>
+	</ul>
+</div>
+
 ## Домашние задания
 
 <div class="section-block">
@@ -61,13 +71,11 @@ title: "Курс Ecology & R"
 
 <div class="section-block">
 	<ul class="clean-list">
+		<li><a href="resourses/">Каталог учебных ресурсов</a> <span class="tiny-note">— полный список материалов с пояснениями.</span></li>
 		<li><a href="general/program.html">Программа курса</a> <span class="tiny-note">— структура и темы занятий.</span></li>
 		<li><a href="general/glossary.html">Машинно-человеческий словарь R</a> <span class="tiny-note">— быстрый справочник терминов и функций.</span></li>
-		<li><a href="cheatsheets/tidyr.pdf">Cheatsheet: tidyr</a></li>
-		<li><a href="cheatsheets/data-transformation.pdf">Cheatsheet: dplyr (EN)</a></li>
-		<li><a href="cheatsheets/data-transformation_ru.pdf">Cheatsheet: dplyr (RU)</a></li>
-		<li><a href="cheatsheets/data-visualization.pdf">Cheatsheet: ggplot2</a></li>
-		<li><a href="cheatsheets/colorbynames.png">Справочник именованных цветов</a></li>
+		<li><a href="resourses/rgbif.pdf">Руководство по rgbif (PDF)</a></li>
+		<li><a href="resourses/data-visualization.pdf">Шпаргалка по визуализации (PDF)</a></li>
 	</ul>
 </div>
 

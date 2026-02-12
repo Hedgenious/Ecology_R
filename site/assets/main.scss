@@ -26,6 +26,54 @@ body {
   max-width: 1080px;
 }
 
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.custom-nav {
+  float: none;
+  line-height: normal;
+  border: 0;
+  background: transparent;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.34rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: #334155 !important;
+  text-decoration: none !important;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover {
+  background: #eef4ff;
+  border-color: #d5e2fb;
+}
+
+.nav-link.active {
+  background: var(--accent-soft);
+  border-color: #b6cefb;
+  color: #1d4ed8 !important;
+  font-weight: 600;
+}
+
 h1, h2, h3 {
   letter-spacing: 0.01em;
 }
@@ -112,6 +160,41 @@ h2 {
   font-size: 0.8rem;
 }
 
+.footer-custom {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.footer-links-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.footer-links-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.footer-links-list li {
+  margin: 0.25rem 0;
+}
+
+.footer-support-block {
+  background: #f8fbff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+}
+
+.footer-support-block p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
 a {
   text-underline-offset: 0.14em;
 }
@@ -124,6 +207,21 @@ table {
 }
 
 @media (max-width: 720px) {
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-list {
+    justify-content: flex-start;
+    gap: 0.3rem;
+  }
+
+  .nav-link {
+    font-size: 0.83rem;
+    padding: 0.3rem 0.58rem;
+  }
+
   .site-title {
     font-size: 1rem;
   }
@@ -143,5 +241,9 @@ table {
   .tiny-note,
   .micro-note {
     font-size: 0.77rem;
+  }
+
+  .footer-custom {
+    grid-template-columns: 1fr;
   }
 }

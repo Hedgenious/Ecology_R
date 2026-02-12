@@ -1,0 +1,18 @@
+<header class="site-header" role="banner">
+  <div class="wrapper nav-wrapper">
+    <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+
+    {% assign current = page.url | replace: 'index.html', '' %}
+
+    <nav class="site-nav custom-nav" aria-label="Основная навигация">
+      <ul class="nav-list">
+        <li><a class="nav-link{% if current == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">Главная</a></li>
+        <li><a class="nav-link{% if current contains '/lessons/' %} active{% endif %}" href="{{ '/lessons/' | relative_url }}">Занятия</a></li>
+        <li><a class="nav-link{% if current contains '/hometasks/' %} active{% endif %}" href="{{ '/hometasks/' | relative_url }}">Домашние задания</a></li>
+        <li><a class="nav-link{% if current contains '/resourses/' or current contains '/cheatsheets/' %} active{% endif %}" href="{{ '/resourses/' | relative_url }}">Учебные ресурсы</a></li>
+        <li><a class="nav-link{% if current contains '/general/program' %} active{% endif %}" href="{{ '/general/program.html' | relative_url }}">Программа</a></li>
+        <li><a class="nav-link{% if current contains '/general/glossary' %} active{% endif %}" href="{{ '/general/glossary.html' | relative_url }}">Словарь</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
